@@ -5,6 +5,7 @@
 Terminal client for [sshx.io](https://sshx.io) collaborative sessions.
 
 [![Go Version](https://img.shields.io/github/go-mod/go-version/Fire162/sshi?logo=go)](https://golang.org)
+[![PyPI Version](https://img.shields.io/pypi/v/sshi-py.svg?logo=pypi&logoColor=white)](https://pypi.org/project/sshi-py/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Protocol Compatibility](https://img.shields.io/badge/sshx%20protocol-100%25%20compatible-brightgreen.svg)](https://github.com/ekzhang/sshx)
 
