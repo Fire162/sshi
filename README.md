@@ -166,9 +166,13 @@ cat test-script.sh | sshi pipe staging
 ### Installation
 
 ```bash
+pip install sshi-py
+```
+
+Or install from source:
+
+```bash
 cd python && pip install .
-# Or directly from GitHub
-pip install "git+https://github.com/Fire162/sshi.git#subdirectory=python"
 ```
 
 ### Async Python Usage

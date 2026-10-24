@@ -1,4 +1,4 @@
-# sshi (Python SDK & Agent Client)
+# sshi-py (Python SDK & Agent Client)
 
 > Async Python 3 client and AI Agent SDK for [sshx.io](https://sshx.io) collaborative terminals.
 
@@ -7,9 +7,14 @@
 ## Installation
 
 ```bash
-pip install .
-# Or install dependencies directly
-pip install argon2-cffi cryptography cbor2 websockets
+pip install sshi-py
+```
+
+Or install from source:
+
+```bash
+git clone https://github.com/Fire162/sshi.git
+cd sshi/python && pip install .
 ```
 
 ---
@@ -46,11 +51,11 @@ asyncio.run(main())
 
 ```bash
 # Run command remotely
-python3 -m sshi.cli run "hr2hQ8YKuf#lFRwv8c7cZhJRd" "python3 -c 'print(1337 * 2)'"
+sshi-py run "hr2hQ8YKuf#lFRwv8c7cZhJRd" "python3 -c 'print(1337 * 2)'"
 
 # Inspect session in JSON
-python3 -m sshi.cli info "hr2hQ8YKuf#lFRwv8c7cZhJRd" --json
+sshi-py info "hr2hQ8YKuf#lFRwv8c7cZhJRd" --json
 
 # Broadcast chat message
-python3 -m sshi.cli chat "hr2hQ8YKuf#lFRwv8c7cZhJRd" "Hello room!"
+sshi-py chat "hr2hQ8YKuf#lFRwv8c7cZhJRd" "Hello room!"
 ```

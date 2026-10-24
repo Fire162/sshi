@@ -3,17 +3,15 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "sshi"
+name = "sshi-py"
 version = "0.2.0"
 description = "Python 3 async client & AI agent SDK for sshx.io collaborative terminals"
 readme = "README.md"
 requires-python = ">=3.10"
-license = { text = "MIT" }
 authors = [{ name = "Fire162" }]
 keywords = ["sshx", "terminal", "ai-agent", "collaboration", "pty", "e2ee"]
 classifiers = [
     "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Topic :: Terminals",
     "Topic :: System :: Networking",
