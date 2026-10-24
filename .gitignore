@@ -1,0 +1,14 @@
+# Binaries
+/sshi
+*.exe
+*.test
+
+# Build artifacts
+dist/
+build/
+bin/
+
+# Temporary files
+*.tmp
+*.log
+.DS_Store
