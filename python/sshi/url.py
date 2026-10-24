@@ -1,7 +1,25 @@
 from dataclasses import dataclass
+import json
+import os
 from urllib.parse import urlparse
 
 DEFAULT_HOST = "sshx.io"
+
+def _lookup_profile(alias: str) -> str | None:
+    config_path = os.path.expanduser("~/.config/sshi/config.json")
+    if not os.path.exists(config_path):
+        return None
+    try:
+        with open(config_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+            sessions = data.get("sessions", {})
+            if alias in sessions and "target" in sessions[alias]:
+                return sessions[alias]["target"]
+            if alias in ("", "last", "default") and data.get("lastSession"):
+                return data["lastSession"]
+    except Exception:
+        pass
+    return None
 
 @dataclass
 class SessionTarget:
@@ -41,10 +59,18 @@ class SessionTarget:
 
 
 def parse_target(target_str: str, default_server: str | None = None) -> SessionTarget:
-    """Parse session target string (URL, token ID#key, or custom host)."""
+    """Parse session target string (URL, token ID#key, saved bookmark alias, or custom host)."""
     target_str = target_str.strip()
     if not target_str:
+        resolved = _lookup_profile("")
+        if resolved:
+            return parse_target(resolved, default_server)
         raise ValueError("session target cannot be empty")
+
+    if "#" not in target_str and "://" not in target_str and "/s/" not in target_str:
+        resolved = _lookup_profile(target_str)
+        if resolved:
+            return parse_target(resolved, default_server)
 
     host = DEFAULT_HOST
     secure = True

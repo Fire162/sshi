@@ -44,6 +44,12 @@ class TestURL(unittest.TestCase):
         self.assertEqual(t2.key, "pass789")
         self.assertEqual(t2.write_password, "writeSecret")
 
+    def test_alias_resolution(self):
+        # 'test' was saved in ~/.config/sshi/config.json
+        target = parse_target("test")
+        self.assertEqual(target.session_id, "hr2hQ8YKuf")
+        self.assertEqual(target.key, "lFRwv8c7cZhJRd")
+
 class TestProtocol(unittest.TestCase):
     def test_encode_and_decode(self):
         auth = encode_authenticate(b"1234", None)
