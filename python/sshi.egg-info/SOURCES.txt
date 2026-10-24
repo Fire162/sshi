@@ -1,0 +1,16 @@
+README.md
+pyproject.toml
+sshi/__init__.py
+sshi/cli.py
+sshi/client.py
+sshi/crypto.py
+sshi/protocol.py
+sshi/session.py
+sshi/url.py
+sshi.egg-info/PKG-INFO
+sshi.egg-info/SOURCES.txt
+sshi.egg-info/dependency_links.txt
+sshi.egg-info/entry_points.txt
+sshi.egg-info/requires.txt
+sshi.egg-info/top_level.txt
+tests/test_sshi.py

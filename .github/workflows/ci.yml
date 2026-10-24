@@ -7,8 +7,8 @@ on:
     branches: [ main ]
 
 jobs:
-  test:
-    name: Test & Build
+  test-go:
+    name: Go Test & Build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -28,3 +28,24 @@ jobs:
 
       - name: Build binary
         run: go build -v ./cmd/sshi
+
+  test-python:
+    name: Python SDK Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install ./python
+
+      - name: Run Python unit tests
+        run: |
+          cd python && python -m unittest discover -v tests

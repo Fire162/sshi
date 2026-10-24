@@ -159,6 +159,58 @@ cat test-script.sh | sshi pipe staging
 
 ---
 
+## 🐍 Python SDK (For AI Agents & Automation)
+
+`sshi` includes a native asynchronous Python 3 SDK in [`python/`](python/) for programmatic AI agent integration (LangChain, AutoGen, CrewAI, PydanticAI, or standalone automation).
+
+### Installation
+
+```bash
+cd python && pip install .
+# Or directly from GitHub
+pip install "git+https://github.com/Fire162/sshi.git#subdirectory=python"
+```
+
+### Async Python Usage
+
+```python
+import asyncio
+from sshi import SSHISession
+
+async def main():
+    target = "https://sshx.io/s/hr2hQ8YKuf#lFRwv8c7cZhJRd"
+
+    # Connect to the session
+    async with SSHISession(target, name="ai-assistant") as session:
+        # Run a command and collect output
+        output = await session.run("uname -a && uptime")
+        print("Command Output:\n", output)
+
+        # Inspect participants
+        for user in session.users:
+            print(f"User: {user.name} (can_write={user.can_write})")
+
+        # Broadcast chat message
+        await session.chat("Hello from autonomous AI agent!")
+
+asyncio.run(main())
+```
+
+### Python CLI (`sshi-py`)
+
+```bash
+# Run command remotely
+sshi-py run "hr2hQ8YKuf#lFRwv8c7cZhJRd" "python3 -c 'print(1337 * 2)'"
+
+# Inspect session in JSON
+sshi-py info "hr2hQ8YKuf#lFRwv8c7cZhJRd" --json
+
+# Send chat message to room
+sshi-py chat "hr2hQ8YKuf#lFRwv8c7cZhJRd" "Hello room!"
+```
+
+---
+
 ## Keyboard Shortcuts
 
 `sshi` uses <kbd>Ctrl</kbd> + <kbd>A</kbd> as its command prefix:

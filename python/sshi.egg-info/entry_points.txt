@@ -1,0 +1,2 @@
+[console_scripts]
+sshi-py = sshi.cli:main
